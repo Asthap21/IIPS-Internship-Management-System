@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block title %}My Internship | IIPS{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-header">
+    <h1>My Internship</h1>
+    <p>View and track your current internship details.</p>
+</div>
+
+<div class="content-card">
+
+
+<div class="section-header">
+    <h2>Internship Details</h2>
+
+    <span class="status-badge status-ongoing">
+        Ongoing
+    </span>
+</div>
+
+<div class="form-row">
+
+    <div class="form-group">
+        <label class="form-label">Company</label>
+        <p>Tech Solutions Pvt. Ltd.</p>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Role</label>
+        <p>Software Development Intern</p>
+    </div>
+
+</div>
+
+<div class="form-row">
+
+    <div class="form-group">
+        <label class="form-label">Start Date</label>
+        <p>01 June 2026</p>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">End Date</label>
+        <p>31 August 2026</p>
+    </div>
+
+</div>
+
+<div class="form-row">
+
+    <div class="form-group">
+        <label class="form-label">Internship Type</label>
+        <p>Hybrid</p>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Faculty Mentor</label>
+        <p>Dr. Faculty Mentor</p>
+    </div>
+
+</div>
+
+
+</div>
+
+<div class="content-card mt-20">
+
+
+<div class="section-header">
+    <h2>Internship Progress</h2>
+</div>
+
+<div class="table-container">
+
+    <table class="data-table">
+
+        <thead>
+            <tr>
+                <th>Activity</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Internship Registered</td>
+                <td>01 June 2026</td>
+                <td>
+                    <span class="status-badge status-completed">
+                        Completed
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Mentor Assigned</td>
+                <td>03 June 2026</td>
+                <td>
+                    <span class="status-badge status-completed">
+                        Completed
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Final Evaluation</td>
+                <td>-</td>
+                <td>
+                    <span class="status-badge status-pending">
+                        Pending
+                    </span>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+</div>
+
+{% endblock %}

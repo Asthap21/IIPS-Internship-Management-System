@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}IIPS Internship Management System{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Top Navigation -->
+        <nav class="navbar">
+
+            <div class="navbar-brand">
+                <span class="brand-name">IIPS</span>
+                <span class="brand-subtitle">
+                    Internship Management System
+                </span>
+            </div>
+
+            <div class="navbar-actions">
+                <span class="user-name">Student</span>
+
+                <button type="button" class="logout-btn">
+                    Logout
+                </button>
+            </div>
+
+        </nav>
+
+
+        <!-- Application Layout -->
+        <div class="app-layout">
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+
+                <div class="sidebar-menu">
+
+                    <p class="sidebar-section-title">Main</p>
+
+                    <a href="#" class="nav-link active">
+                        Dashboard
+                    </a>
+
+                    <a href="#" class="nav-link">
+                        Internship Registration
+                    </a>
+
+                    <a href="#" class="nav-link">
+                        My Internship
+                    </a>
+
+                    <a href="#" class="nav-link">
+                        Companies
+                    </a>
+
+                    <a href="#" class="nav-link">
+                        Offers
+                    </a>
+
+                    <a href="#" class="nav-link">
+                        Evaluation
+                    </a>
+
+                </div>
+
+            </aside>
+
+
+            <!-- Main Content -->
+            <main class="main-content">
+
+                {% block content %}
+                {% endblock %}
+
+            </main>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

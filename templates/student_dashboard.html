@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Student Dashboard | IIPS{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-header">
+    <h1>Student Dashboard</h1>
+    <p>Here's an overview of your internship activities and recent updates.</p>
+</div>
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+        <p class="stat-label">Active Internship</p>
+        <p class="stat-value">01</p>
+    </div>
+
+    <div class="stat-card">
+        <p class="stat-label">Applications</p>
+        <p class="stat-value">08</p>
+    </div>
+
+    <div class="stat-card">
+        <p class="stat-label">Offers Received</p>
+        <p class="stat-value">03</p>
+    </div>
+
+    <div class="stat-card">
+        <p class="stat-label">Evaluation Status</p>
+        <p class="stat-value">Pending</p>
+    </div>
+
+</div>
+
+<div class="content-card">
+    <div class="section-header">
+        <h2>Recent Internship Activity</h2>
+        <a href="#" class="btn btn-secondary">View All</a>
+    </div>
+
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Role</th>
+                    <th>Duration</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Tech Solutions Pvt. Ltd.</td>
+                    <td>Software Intern</td>
+                    <td>June - August 2026</td>
+                    <td>
+                        <span class="status-badge status-ongoing">Ongoing</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>ABC Technologies</td>
+                    <td>Web Development Intern</td>
+                    <td>May - July 2026</td>
+                    <td>
+                        <span class="status-badge status-completed">Completed</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Internship Management | IIPS{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-header">
+    <h1>Internship Management</h1>
+    <p>Monitor and manage registered internships.</p>
+</div>
+
+<div class="content-card">
+
+
+<div class="section-header">
+    <h2>Internship Records</h2>
+
+    <input
+        type="search"
+        class="form-control management-search"
+        placeholder="Search records..."
+    >
+</div>
+
+<div class="table-container">
+
+    <table class="data-table">
+
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Company</th>
+                <th>Role</th>
+                <th>Mentor</th>
+                <th>Duration</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Student One</td>
+                <td>Tech Solutions Pvt. Ltd.</td>
+                <td>Software Intern</td>
+                <td>Dr. Faculty Mentor</td>
+                <td>Jun - Aug 2026</td>
+                <td>
+                    <span class="status-badge status-ongoing">
+                        Ongoing
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Student Two</td>
+                <td>ABC Technologies</td>
+                <td>Web Developer</td>
+                <td>Dr. Faculty Mentor</td>
+                <td>May - Jul 2026</td>
+                <td>
+                    <span class="status-badge status-completed">
+                        Completed
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Student Three</td>
+                <td>Digital Innovations</td>
+                <td>Python Intern</td>
+                <td>Dr. Faculty Mentor</td>
+                <td>Jul - Sep 2026</td>
+                <td>
+                    <span class="status-badge status-pending">
+                        Pending
+                    </span>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+</div>
+
+{% endblock %}

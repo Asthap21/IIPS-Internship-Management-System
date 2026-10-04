@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Mentor Dashboard | IIPS{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-header">
+    <h1>Mentor Dashboard</h1>
+    <p>Here's an overview of your assigned students and internship activities.</p>
+</div>
+
+<div class="stats-grid">
+
+
+<div class="stat-card">
+    <p class="stat-label">Assigned Students</p>
+    <p class="stat-value">24</p>
+</div>
+
+<div class="stat-card">
+    <p class="stat-label">Ongoing Internships</p>
+    <p class="stat-value">18</p>
+</div>
+
+<div class="stat-card">
+    <p class="stat-label">Completed</p>
+    <p class="stat-value">06</p>
+</div>
+
+<div class="stat-card">
+    <p class="stat-label">Pending Evaluations</p>
+    <p class="stat-value">04</p>
+</div>
+
+
+</div>
+
+<div class="content-card">
+
+
+<div class="section-header">
+    <h2>Recent Student Activity</h2>
+    <a href="#" class="btn btn-secondary">View Students</a>
+</div>
+
+<div class="table-container">
+
+    <table class="data-table">
+
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Company</th>
+                <th>Internship Role</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Student One</td>
+                <td>Tech Solutions Pvt. Ltd.</td>
+                <td>Software Intern</td>
+                <td>
+                    <span class="status-badge status-ongoing">
+                        Ongoing
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Student Two</td>
+                <td>ABC Technologies</td>
+                <td>Web Developer</td>
+                <td>
+                    <span class="status-badge status-pending">
+                        Evaluation Pending
+                    </span>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+</div>
+
+{% endblock %}

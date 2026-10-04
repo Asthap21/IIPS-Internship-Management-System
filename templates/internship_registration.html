@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}Internship Registration | IIPS{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-header">
+    <h1>Internship Registration</h1>
+    <p>Submit your internship details for registration.</p>
+</div>
+
+<div class="content-card">
+
+
+<form>
+
+    <div class="form-row">
+
+        <div class="form-group">
+            <label class="form-label" for="company">
+                Company Name
+            </label>
+
+            <input
+                type="text"
+                id="company"
+                class="form-control"
+                placeholder="Enter company name"
+            >
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="role">
+                Internship Role
+            </label>
+
+            <input
+                type="text"
+                id="role"
+                class="form-control"
+                placeholder="e.g. Software Intern"
+            >
+        </div>
+
+    </div>
+
+    <div class="form-row">
+
+        <div class="form-group">
+            <label class="form-label" for="start-date">
+                Start Date
+            </label>
+
+            <input
+                type="date"
+                id="start-date"
+                class="form-control"
+            >
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="end-date">
+                End Date
+            </label>
+
+            <input
+                type="date"
+                id="end-date"
+                class="form-control"
+            >
+        </div>
+
+    </div>
+
+    <div class="form-row">
+
+        <div class="form-group">
+            <label class="form-label" for="internship-type">
+                Internship Type
+            </label>
+
+            <select id="internship-type" class="form-control">
+                <option value="">Select type</option>
+                <option>On-site</option>
+                <option>Remote</option>
+                <option>Hybrid</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="mentor">
+                Mentor
+            </label>
+
+            <select id="mentor" class="form-control">
+                <option value="">Select mentor</option>
+                <option>Faculty Mentor 1</option>
+                <option>Faculty Mentor 2</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="description">
+            Internship Description
+        </label>
+
+        <textarea
+            id="description"
+            class="form-control"
+            rows="5"
+            placeholder="Describe your internship..."
+        ></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Submit Registration
+    </button>
+
+</form>
+
+
+</div>
+
+{% endblock %}

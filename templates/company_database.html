@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}Company Database | IIPS{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-header">
+    <h1>Company Database</h1>
+    <p>Browse companies available for internship opportunities.</p>
+</div>
+
+<div class="content-card">
+
+
+<div class="section-header">
+    <h2>Registered Companies</h2>
+
+    <input
+        type="search"
+        class="form-control"
+        placeholder="Search companies..."
+    >
+</div>
+
+<div class="table-container">
+
+    <table class="data-table">
+
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Industry</th>
+                <th>Location</th>
+                <th>Internship Type</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Tech Solutions Pvt. Ltd.</td>
+                <td>Information Technology</td>
+                <td>Indore</td>
+                <td>Hybrid</td>
+                <td>
+                    <span class="status-badge status-completed">
+                        Available
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>ABC Technologies</td>
+                <td>Software Development</td>
+                <td>Bhopal</td>
+                <td>On-site</td>
+                <td>
+                    <span class="status-badge status-completed">
+                        Available
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Digital Innovations</td>
+                <td>IT Services</td>
+                <td>Indore</td>
+                <td>Remote</td>
+                <td>
+                    <span class="status-badge status-pending">
+                        Limited
+                    </span>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+</div>
+
+{% endblock %}

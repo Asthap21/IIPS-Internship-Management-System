@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Company Management | IIPS{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-header">
+    <h1>Company Management</h1>
+    <p>Manage companies registered with the institution.</p>
+</div>
+
+<div class="content-card">
+
+
+<div class="section-header">
+    <h2>Company Records</h2>
+
+    <button type="button" class="btn btn-primary">
+        Add Company
+    </button>
+</div>
+
+<div class="table-container">
+
+    <table class="data-table">
+
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Industry</th>
+                <th>Location</th>
+                <th>Contact Person</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Tech Solutions Pvt. Ltd.</td>
+                <td>Information Technology</td>
+                <td>Indore</td>
+                <td>HR Manager</td>
+                <td>
+                    <span class="status-badge status-accepted">
+                        Active
+                    </span>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-secondary">
+                        Edit
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>ABC Technologies</td>
+                <td>Software Development</td>
+                <td>Bhopal</td>
+                <td>Recruitment Lead</td>
+                <td>
+                    <span class="status-badge status-accepted">
+                        Active
+                    </span>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-secondary">
+                        Edit
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Digital Innovations</td>
+                <td>IT Services</td>
+                <td>Indore</td>
+                <td>HR Executive</td>
+                <td>
+                    <span class="status-badge status-pending">
+                        Pending
+                    </span>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary">
+                        Review
+                    </button>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+</div>
+
+{% endblock %}

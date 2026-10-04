@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Offer Tracking | IIPS{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-header">
+    <h1>Offer Tracking</h1>
+    <p>View and manage your internship offers.</p>
+</div>
+
+<div class="content-card">
+
+
+<div class="table-container">
+
+    <table class="data-table">
+
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Role</th>
+                <th>Offer Date</th>
+                <th>Joining Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Tech Solutions Pvt. Ltd.</td>
+                <td>Software Intern</td>
+                <td>20 May 2026</td>
+                <td>01 June 2026</td>
+                <td>
+                    <span class="status-badge status-accepted">
+                        Accepted
+                    </span>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-secondary">
+                        View
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>ABC Technologies</td>
+                <td>Web Developer Intern</td>
+                <td>15 May 2026</td>
+                <td>-</td>
+                <td>
+                    <span class="status-badge status-pending">
+                        Pending
+                    </span>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary">
+                        Review
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Digital Innovations</td>
+                <td>Python Intern</td>
+                <td>10 May 2026</td>
+                <td>-</td>
+                <td>
+                    <span class="status-badge status-rejected">
+                        Rejected
+                    </span>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-secondary">
+                        View
+                    </button>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}My Students | IIPS{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-header">
+    <h1>My Students</h1>
+    <p>View and monitor students assigned to you.</p>
+</div>
+
+<div class="content-card">
+
+
+<div class="section-header">
+    <h2>Assigned Students</h2>
+
+    <input
+        type="search"
+        class="form-control"
+        placeholder="Search students..."
+    >
+</div>
+
+<div class="table-container">
+
+    <table class="data-table">
+
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Enrollment No.</th>
+                <th>Company</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Student One</td>
+                <td>IIPS2026001</td>
+                <td>Tech Solutions Pvt. Ltd.</td>
+                <td>Software Intern</td>
+                <td>
+                    <span class="status-badge status-ongoing">
+                        Ongoing
+                    </span>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-secondary">
+                        View
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Student Two</td>
+                <td>IIPS2026002</td>
+                <td>ABC Technologies</td>
+                <td>Web Developer</td>
+                <td>
+                    <span class="status-badge status-completed">
+                        Completed
+                    </span>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary">
+                        Evaluate
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Student Three</td>
+                <td>IIPS2026003</td>
+                <td>Digital Innovations</td>
+                <td>Python Intern</td>
+                <td>
+                    <span class="status-badge status-ongoing">
+                        Ongoing
+                    </span>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-secondary">
+                        View
+                    </button>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+</div>
+
+{% endblock %}

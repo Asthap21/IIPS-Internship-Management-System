@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Student Management | IIPS{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-header">
+    <h1>Student Management</h1>
+    <p>Manage student records and internship participation.</p>
+</div>
+
+<div class="content-card">
+
+
+<div class="section-header">
+    <h2>Student Records</h2>
+
+    <input
+        type="search"
+        class="form-control"
+        placeholder="Search students..."
+        style="max-width: 250px;"
+    >
+</div>
+
+<div class="table-container">
+
+    <table class="data-table">
+
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Enrollment No.</th>
+                <th>Email</th>
+                <th>Internship</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Student One</td>
+                <td>IIPS2026001</td>
+                <td>student1@example.com</td>
+                <td>Tech Solutions Pvt. Ltd.</td>
+                <td>
+                    <span class="status-badge status-ongoing">
+                        Active
+                    </span>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-secondary">
+                        View
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Student Two</td>
+                <td>IIPS2026002</td>
+                <td>student2@example.com</td>
+                <td>ABC Technologies</td>
+                <td>
+                    <span class="status-badge status-completed">
+                        Completed
+                    </span>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-secondary">
+                        View
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Student Three</td>
+                <td>IIPS2026003</td>
+                <td>-</td>
+                <td>-</td>
+                <td>
+                    <span class="status-badge status-pending">
+                        Not Assigned
+                    </span>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary">
+                        Assign
+                    </button>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard | IIPS{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-header">
+    <h1>Admin Dashboard</h1>
+    <p>Here's an overview of internship activities and system records.</p>
+</div>
+
+<div class="stats-grid">
+
+
+<div class="stat-card">
+    <p class="stat-label">Total Students</p>
+    <p class="stat-value">248</p>
+</div>
+
+<div class="stat-card">
+    <p class="stat-label">Active Internships</p>
+    <p class="stat-value">126</p>
+</div>
+
+<div class="stat-card">
+    <p class="stat-label">Registered Companies</p>
+    <p class="stat-value">54</p>
+</div>
+
+<div class="stat-card">
+    <p class="stat-label">Pending Evaluations</p>
+    <p class="stat-value">18</p>
+</div>
+
+
+</div>
+
+<div class="content-card">
+
+
+<div class="section-header">
+    <h2>Recent Internship Records</h2>
+    <a href="#" class="btn btn-secondary">View All</a>
+</div>
+
+<div class="table-container">
+
+    <table class="data-table">
+
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Company</th>
+                <th>Mentor</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Student One</td>
+                <td>Tech Solutions Pvt. Ltd.</td>
+                <td>Dr. Faculty Mentor</td>
+                <td>
+                    <span class="status-badge status-ongoing">
+                        Ongoing
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Student Two</td>
+                <td>ABC Technologies</td>
+                <td>Dr. Faculty Mentor</td>
+                <td>
+                    <span class="status-badge status-completed">
+                        Completed
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Student Three</td>
+                <td>Digital Innovations</td>
+                <td>Dr. Faculty Mentor</td>
+                <td>
+                    <span class="status-badge status-pending">
+                        Pending
+                    </span>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+</div>
+
+{% endblock %}
+
