@@ -11,89 +11,98 @@
 
 <div class="content-card">
 
+    <div class="section-header">
+        <h2>Company Records</h2>
 
-<div class="section-header">
-    <h2>Company Records</h2>
+        <button type="button" class="btn btn-primary">
+            Add Company
+        </button>
+    </div>
 
-    <button type="button" class="btn btn-primary">
-        Add Company
-    </button>
-</div>
+    <div class="table-container">
 
-<div class="table-container">
+        <table class="data-table">
 
-    <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Industry</th>
+                    <th>Location</th>
+                    <th>Contact Person</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
 
-        <thead>
-            <tr>
-                <th>Company</th>
-                <th>Industry</th>
-                <th>Location</th>
-                <th>Contact Person</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-        </thead>
+            <tbody>
 
-        <tbody>
+                {% if companies %}
 
-            <tr>
-                <td>Tech Solutions Pvt. Ltd.</td>
-                <td>Information Technology</td>
-                <td>Indore</td>
-                <td>HR Manager</td>
-                <td>
-                    <span class="status-badge status-accepted">
-                        Active
-                    </span>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-secondary">
-                        Edit
-                    </button>
-                </td>
-            </tr>
+                    {% for company in companies %}
 
-            <tr>
-                <td>ABC Technologies</td>
-                <td>Software Development</td>
-                <td>Bhopal</td>
-                <td>Recruitment Lead</td>
-                <td>
-                    <span class="status-badge status-accepted">
-                        Active
-                    </span>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-secondary">
-                        Edit
-                    </button>
-                </td>
-            </tr>
+                    <tr>
 
-            <tr>
-                <td>Digital Innovations</td>
-                <td>IT Services</td>
-                <td>Indore</td>
-                <td>HR Executive</td>
-                <td>
-                    <span class="status-badge status-pending">
-                        Pending
-                    </span>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-primary">
-                        Review
-                    </button>
-                </td>
-            </tr>
+                        <td>
+                            {{ company.name }}
+                        </td>
 
-        </tbody>
+                        <td>
+                            {{ company.industry or "—" }}
+                        </td>
 
-    </table>
+                        <td>
+                            {{ company.location or "—" }}
+                        </td>
 
-</div>
+                        <td>
+                            —
+                        </td>
 
+                        <td>
+
+                            {% if company.status == "Available" %}
+
+                                <span class="status-badge status-accepted">
+                                    Active
+                                </span>
+
+                            {% else %}
+
+                                <span class="status-badge status-pending">
+                                    {{ company.status }}
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            <button type="button" class="btn btn-secondary">
+                                Edit
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <tr>
+                        <td colspan="6">
+                            No company records found.
+                        </td>
+                    </tr>
+
+                {% endif %}
+
+            </tbody>
+
+        </table>
+
+    </div>
 
 </div>
 

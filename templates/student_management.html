@@ -11,92 +11,130 @@
 
 <div class="content-card">
 
+    <div class="section-header">
+        <h2>Student Records</h2>
 
-<div class="section-header">
-    <h2>Student Records</h2>
+        <input
+            type="search"
+            class="form-control"
+            placeholder="Search students..."
+            style="max-width: 250px;"
+        >
+    </div>
 
-    <input
-        type="search"
-        class="form-control"
-        placeholder="Search students..."
-        style="max-width: 250px;"
-    >
-</div>
+    <div class="table-container">
 
-<div class="table-container">
+        <table class="data-table">
 
-    <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Enrollment No.</th>
+                    <th>Email</th>
+                    <th>Internship</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
 
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Enrollment No.</th>
-                <th>Email</th>
-                <th>Internship</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-        </thead>
+            <tbody>
 
-        <tbody>
+                {% if students %}
 
-            <tr>
-                <td>Student One</td>
-                <td>IIPS2026001</td>
-                <td>student1@example.com</td>
-                <td>Tech Solutions Pvt. Ltd.</td>
-                <td>
-                    <span class="status-badge status-ongoing">
-                        Active
-                    </span>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-secondary">
-                        View
-                    </button>
-                </td>
-            </tr>
+                    {% for student in students %}
 
-            <tr>
-                <td>Student Two</td>
-                <td>IIPS2026002</td>
-                <td>student2@example.com</td>
-                <td>ABC Technologies</td>
-                <td>
-                    <span class="status-badge status-completed">
-                        Completed
-                    </span>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-secondary">
-                        View
-                    </button>
-                </td>
-            </tr>
+                        {% set internship = student_internships.get(student.id) %}
 
-            <tr>
-                <td>Student Three</td>
-                <td>IIPS2026003</td>
-                <td>-</td>
-                <td>-</td>
-                <td>
-                    <span class="status-badge status-pending">
-                        Not Assigned
-                    </span>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-primary">
-                        Assign
-                    </button>
-                </td>
-            </tr>
+                        <tr>
 
-        </tbody>
+                            <td>
+                                {{ student.first_name }}
+                                {{ student.last_name }}
+                            </td>
 
-    </table>
+                            <td>
+                                —
+                            </td>
 
-</div>
+                            <td>
+                                {{ student.email }}
+                            </td>
 
+                            <td>
+
+                                {% if internship %}
+
+                                    {{ internship.company.name }}
+
+                                {% else %}
+
+                                    —
+
+                                {% endif %}
+
+                            </td>
+
+                            <td>
+
+                                {% if internship %}
+
+                                    {% if internship.status == "Ongoing" %}
+
+                                        <span class="status-badge status-ongoing">
+                                            Active
+                                        </span>
+
+                                    {% elif internship.status == "Completed" %}
+
+                                        <span class="status-badge status-completed">
+                                            Completed
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="status-badge status-pending">
+                                            {{ internship.status }}
+                                        </span>
+
+                                    {% endif %}
+
+                                {% else %}
+
+                                    <span class="status-badge status-pending">
+                                        Not Assigned
+                                    </span>
+
+                                {% endif %}
+
+                            </td>
+
+                            <td>
+
+                                <button type="button" class="btn btn-secondary">
+                                    View
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <tr>
+                        <td colspan="6">
+                            No student records found.
+                        </td>
+                    </tr>
+
+                {% endif %}
+
+            </tbody>
+
+        </table>
+
+    </div>
 
 </div>
 

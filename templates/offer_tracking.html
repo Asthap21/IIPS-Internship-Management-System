@@ -11,81 +11,110 @@
 
 <div class="content-card">
 
+    <div class="table-container">
 
-<div class="table-container">
+        <table class="data-table">
 
-    <table class="data-table">
+            <thead>
 
-        <thead>
-            <tr>
-                <th>Company</th>
-                <th>Role</th>
-                <th>Offer Date</th>
-                <th>Joining Date</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-        </thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Role</th>
+                    <th>Offer Date</th>
+                    <th>Joining Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
 
-        <tbody>
+            </thead>
 
-            <tr>
-                <td>Tech Solutions Pvt. Ltd.</td>
-                <td>Software Intern</td>
-                <td>20 May 2026</td>
-                <td>01 June 2026</td>
-                <td>
-                    <span class="status-badge status-accepted">
-                        Accepted
-                    </span>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-secondary">
-                        View
-                    </button>
-                </td>
-            </tr>
 
-            <tr>
-                <td>ABC Technologies</td>
-                <td>Web Developer Intern</td>
-                <td>15 May 2026</td>
-                <td>-</td>
-                <td>
-                    <span class="status-badge status-pending">
-                        Pending
-                    </span>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-primary">
-                        Review
-                    </button>
-                </td>
-            </tr>
+            <tbody>
 
-            <tr>
-                <td>Digital Innovations</td>
-                <td>Python Intern</td>
-                <td>10 May 2026</td>
-                <td>-</td>
-                <td>
-                    <span class="status-badge status-rejected">
-                        Rejected
-                    </span>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-secondary">
-                        View
-                    </button>
-                </td>
-            </tr>
+                {% if offers %}
 
-        </tbody>
+                    {% for offer in offers %}
 
-    </table>
+                    <tr>
 
-</div>
+                        <td>
+                            {{ offer.company.name }}
+                        </td>
 
+                        <td>
+                            {{ offer.role }}
+                        </td>
+
+                        <td>
+                            {{ offer.offer_date.strftime('%d %B %Y') }}
+                        </td>
+
+                        <td>
+
+                            {% if offer.joining_date %}
+                                {{ offer.joining_date.strftime('%d %B %Y') }}
+                            {% else %}
+                                -
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            {% if offer.status == "Accepted" %}
+
+                                <span class="status-badge status-accepted">
+                                    Accepted
+                                </span>
+
+                            {% elif offer.status == "Rejected" %}
+
+                                <span class="status-badge status-rejected">
+                                    Rejected
+                                </span>
+
+                            {% else %}
+
+                                <span class="status-badge status-pending">
+                                    {{ offer.status }}
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                            >
+                                View
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <tr>
+
+                        <td colspan="6">
+                            No internship offers found.
+                        </td>
+
+                    </tr>
+
+                {% endif %}
+
+            </tbody>
+
+        </table>
+
+    </div>
 
 </div>
 

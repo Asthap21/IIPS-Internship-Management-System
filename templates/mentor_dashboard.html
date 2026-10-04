@@ -11,81 +11,114 @@
 
 <div class="stats-grid">
 
+    <div class="stat-card">
+        <p class="stat-label">Assigned Students</p>
+        <p class="stat-value">{{ assigned_count }}</p>
+    </div>
 
-<div class="stat-card">
-    <p class="stat-label">Assigned Students</p>
-    <p class="stat-value">24</p>
-</div>
+    <div class="stat-card">
+        <p class="stat-label">Ongoing Internships</p>
+        <p class="stat-value">{{ ongoing_count }}</p>
+    </div>
 
-<div class="stat-card">
-    <p class="stat-label">Ongoing Internships</p>
-    <p class="stat-value">18</p>
-</div>
+    <div class="stat-card">
+        <p class="stat-label">Completed</p>
+        <p class="stat-value">{{ completed_count }}</p>
+    </div>
 
-<div class="stat-card">
-    <p class="stat-label">Completed</p>
-    <p class="stat-value">06</p>
-</div>
-
-<div class="stat-card">
-    <p class="stat-label">Pending Evaluations</p>
-    <p class="stat-value">04</p>
-</div>
-
+    <div class="stat-card">
+        <p class="stat-label">Pending Evaluations</p>
+        <p class="stat-value">{{ pending_evaluations }}</p>
+    </div>
 
 </div>
 
 <div class="content-card">
 
+    <div class="section-header">
+        <h2>Recent Student Activity</h2>
+        <a href="{{ url_for('my_students') }}" class="btn btn-secondary">
+            View Students
+        </a>
+    </div>
 
-<div class="section-header">
-    <h2>Recent Student Activity</h2>
-    <a href="#" class="btn btn-secondary">View Students</a>
-</div>
+    <div class="table-container">
 
-<div class="table-container">
+        <table class="data-table">
 
-    <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Company</th>
+                    <th>Internship Role</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
 
-        <thead>
-            <tr>
-                <th>Student</th>
-                <th>Company</th>
-                <th>Internship Role</th>
-                <th>Status</th>
-            </tr>
-        </thead>
+            <tbody>
 
-        <tbody>
+                {% if assigned_internships %}
 
-            <tr>
-                <td>Student One</td>
-                <td>Tech Solutions Pvt. Ltd.</td>
-                <td>Software Intern</td>
-                <td>
-                    <span class="status-badge status-ongoing">
-                        Ongoing
-                    </span>
-                </td>
-            </tr>
+                    {% for internship in assigned_internships[:5] %}
 
-            <tr>
-                <td>Student Two</td>
-                <td>ABC Technologies</td>
-                <td>Web Developer</td>
-                <td>
-                    <span class="status-badge status-pending">
-                        Evaluation Pending
-                    </span>
-                </td>
-            </tr>
+                    <tr>
 
-        </tbody>
+                        <td>
+                            {{ internship.student.first_name }}
+                            {{ internship.student.last_name }}
+                        </td>
 
-    </table>
+                        <td>
+                            {{ internship.company.name }}
+                        </td>
 
-</div>
+                        <td>
+                            {{ internship.role }}
+                        </td>
 
+                        <td>
+
+                            {% if internship.status == "Completed" %}
+
+                                <span class="status-badge status-completed">
+                                    Completed
+                                </span>
+
+                            {% elif internship.status == "Ongoing" %}
+
+                                <span class="status-badge status-ongoing">
+                                    Ongoing
+                                </span>
+
+                            {% else %}
+
+                                <span class="status-badge status-pending">
+                                    {{ internship.status }}
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <tr>
+                        <td colspan="4">
+                            No students are currently assigned to you.
+                        </td>
+                    </tr>
+
+                {% endif %}
+
+            </tbody>
+
+        </table>
+
+    </div>
 
 </div>
 

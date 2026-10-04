@@ -6,29 +6,29 @@
 
 <div class="dashboard-header">
     <h1>Internship Analytics</h1>
-    <p>View internship statistics and overall placement activity.</p>
+    <p>View an overview of internship statistics and company information.</p>
 </div>
 
 <div class="stats-grid">
 
     <div class="stat-card">
         <p class="stat-label">Total Internships</p>
-        <p class="stat-value">186</p>
+        <p class="stat-value">{{ total_internships }}</p>
     </div>
 
     <div class="stat-card">
         <p class="stat-label">Completed</p>
-        <p class="stat-value">92</p>
+        <p class="stat-value">{{ completed_internships }}</p>
     </div>
 
     <div class="stat-card">
         <p class="stat-label">Ongoing</p>
-        <p class="stat-value">74</p>
+        <p class="stat-value">{{ ongoing_internships }}</p>
     </div>
 
     <div class="stat-card">
-        <p class="stat-label">Companies</p>
-        <p class="stat-value">54</p>
+        <p class="stat-label">Registered Companies</p>
+        <p class="stat-value">{{ registered_companies }}</p>
     </div>
 
 </div>
@@ -36,40 +36,58 @@
 <div class="content-card">
 
     <div class="section-header">
-        <h2>Internship Status Overview</h2>
+        <h2>Internship Status</h2>
     </div>
 
-    <div class="analytics-placeholder">
+    <div class="analytics-section">
 
-        <div class="analytics-bar">
-            <span>Completed</span>
-            <div class="bar">
-                <div class="bar-fill completed-fill"></div>
+        <div class="analytics-row">
+            <div class="analytics-label">
+                <span>Completed</span>
+                <span>{{ completed_internships }}</span>
             </div>
-            <span>92</span>
+
+            <div class="progress-bar">
+                <div
+                    class="progress-fill"
+                    style="width: {{ completed_percentage }}%;">
+                </div>
+            </div>
         </div>
 
-        <div class="analytics-bar">
-            <span>Ongoing</span>
-            <div class="bar">
-                <div class="bar-fill ongoing-fill"></div>
+        <div class="analytics-row">
+            <div class="analytics-label">
+                <span>Ongoing</span>
+                <span>{{ ongoing_internships }}</span>
             </div>
-            <span>74</span>
+
+            <div class="progress-bar">
+                <div
+                    class="progress-fill"
+                    style="width: {{ ongoing_percentage }}%;">
+                </div>
+            </div>
         </div>
 
-        <div class="analytics-bar">
-            <span>Pending</span>
-            <div class="bar">
-                <div class="bar-fill pending-fill"></div>
+        <div class="analytics-row">
+            <div class="analytics-label">
+                <span>Pending</span>
+                <span>{{ pending_internships }}</span>
             </div>
-            <span>20</span>
+
+            <div class="progress-bar">
+                <div
+                    class="progress-fill"
+                    style="width: {{ pending_percentage }}%;">
+                </div>
+            </div>
         </div>
 
     </div>
 
 </div>
 
-<div class="content-card mt-20">
+<div class="content-card">
 
     <div class="section-header">
         <h2>Internships by Industry</h2>
@@ -90,33 +108,28 @@
 
             <tbody>
 
-                <tr>
-                    <td>Information Technology</td>
-                    <td>82</td>
-                    <td>42</td>
-                    <td>40</td>
-                </tr>
+                {% if industry_data %}
 
-                <tr>
-                    <td>Software Development</td>
-                    <td>56</td>
-                    <td>31</td>
-                    <td>25</td>
-                </tr>
+                    {% for industry in industry_data %}
 
-                <tr>
-                    <td>Finance</td>
-                    <td>28</td>
-                    <td>13</td>
-                    <td>15</td>
-                </tr>
+                    <tr>
+                        <td>{{ industry.name }}</td>
+                        <td>{{ industry.total }}</td>
+                        <td>{{ industry.completed }}</td>
+                        <td>{{ industry.ongoing }}</td>
+                    </tr>
 
-                <tr>
-                    <td>Marketing</td>
-                    <td>20</td>
-                    <td>06</td>
-                    <td>14</td>
-                </tr>
+                    {% endfor %}
+
+                {% else %}
+
+                    <tr>
+                        <td colspan="4">
+                            No industry data available.
+                        </td>
+                    </tr>
+
+                {% endif %}
 
             </tbody>
 

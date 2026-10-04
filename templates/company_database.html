@@ -11,75 +11,105 @@
 
 <div class="content-card">
 
+    <div class="section-header">
 
-<div class="section-header">
-    <h2>Registered Companies</h2>
+        <h2>Registered Companies</h2>
 
-    <input
-        type="search"
-        class="form-control"
-        placeholder="Search companies..."
-    >
-</div>
+        <form method="GET" action="{{ url_for('company_database') }}">
 
-<div class="table-container">
+            <input
+                type="search"
+                name="search"
+                value="{{ search }}"
+                class="form-control"
+                placeholder="Search companies..."
+            >
 
-    <table class="data-table">
+        </form>
 
-        <thead>
-            <tr>
-                <th>Company</th>
-                <th>Industry</th>
-                <th>Location</th>
-                <th>Internship Type</th>
-                <th>Status</th>
-            </tr>
-        </thead>
+    </div>
 
-        <tbody>
 
-            <tr>
-                <td>Tech Solutions Pvt. Ltd.</td>
-                <td>Information Technology</td>
-                <td>Indore</td>
-                <td>Hybrid</td>
-                <td>
-                    <span class="status-badge status-completed">
-                        Available
-                    </span>
-                </td>
-            </tr>
+    <div class="table-container">
 
-            <tr>
-                <td>ABC Technologies</td>
-                <td>Software Development</td>
-                <td>Bhopal</td>
-                <td>On-site</td>
-                <td>
-                    <span class="status-badge status-completed">
-                        Available
-                    </span>
-                </td>
-            </tr>
+        <table class="data-table">
 
-            <tr>
-                <td>Digital Innovations</td>
-                <td>IT Services</td>
-                <td>Indore</td>
-                <td>Remote</td>
-                <td>
-                    <span class="status-badge status-pending">
-                        Limited
-                    </span>
-                </td>
-            </tr>
+            <thead>
 
-        </tbody>
+                <tr>
+                    <th>Company</th>
+                    <th>Industry</th>
+                    <th>Location</th>
+                    <th>Internship Type</th>
+                    <th>Status</th>
+                </tr>
 
-    </table>
+            </thead>
 
-</div>
 
+            <tbody>
+
+                {% if companies %}
+
+                    {% for company in companies %}
+
+                    <tr>
+
+                        <td>
+                            {{ company.name }}
+                        </td>
+
+                        <td>
+                            {{ company.industry or "Not specified" }}
+                        </td>
+
+                        <td>
+                            {{ company.location or "Not specified" }}
+                        </td>
+
+                        <td>
+                            {{ company.internship_type or "Not specified" }}
+                        </td>
+
+                        <td>
+
+                            {% if company.status == "Available" %}
+
+                                <span class="status-badge status-completed">
+                                    Available
+                                </span>
+
+                            {% else %}
+
+                                <span class="status-badge status-pending">
+                                    {{ company.status }}
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <tr>
+
+                        <td colspan="5">
+                            No companies found.
+                        </td>
+
+                    </tr>
+
+                {% endif %}
+
+            </tbody>
+
+        </table>
+
+    </div>
 
 </div>
 

@@ -9,100 +9,324 @@
     <p>View your internship evaluation and mentor feedback.</p>
 </div>
 
+
+{% if evaluation %}
+
 <div class="content-card">
 
+    <div class="section-header">
 
-<div class="section-header">
-    <h2>Evaluation Status</h2>
+        <h2>Evaluation Status</h2>
 
-    <span class="status-badge status-pending">
-        Pending
-    </span>
-</div>
+        {% if evaluation.overall_score is not none %}
 
-<div class="form-row">
+            <span class="status-badge status-completed">
+                Completed
+            </span>
 
-    <div class="form-group">
-        <label class="form-label">Student Name</label>
-        <p>Student One</p>
+        {% else %}
+
+            <span class="status-badge status-pending">
+                Pending
+            </span>
+
+        {% endif %}
+
     </div>
 
-    <div class="form-group">
-        <label class="form-label">Company</label>
-        <p>Tech Solutions Pvt. Ltd.</p>
+
+    <div class="form-row">
+
+        <div class="form-group">
+            <label class="form-label">Student Name</label>
+
+            <p>
+                {{ current_user.first_name }}
+                {{ current_user.last_name }}
+            </p>
+        </div>
+
+
+        <div class="form-group">
+            <label class="form-label">Company</label>
+
+            <p>
+                {{ evaluation.internship.company.name }}
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="form-row">
+
+        <div class="form-group">
+            <label class="form-label">Faculty Mentor</label>
+
+            {% if evaluation.mentor %}
+
+                <p>
+                    {{ evaluation.mentor.first_name }}
+                    {{ evaluation.mentor.last_name }}
+                </p>
+
+            {% else %}
+
+                <p>Not assigned</p>
+
+            {% endif %}
+
+        </div>
+
+
+        <div class="form-group">
+            <label class="form-label">Evaluation Date</label>
+
+            {% if evaluation.evaluation_date %}
+
+                <p>
+                    {{ evaluation.evaluation_date.strftime('%d %B %Y') }}
+                </p>
+
+            {% else %}
+
+                <p>Not evaluated yet</p>
+
+            {% endif %}
+
+        </div>
+
     </div>
 
 </div>
 
-<div class="form-row">
-
-    <div class="form-group">
-        <label class="form-label">Faculty Mentor</label>
-        <p>Dr. Faculty Mentor</p>
-    </div>
-
-    <div class="form-group">
-        <label class="form-label">Evaluation Date</label>
-        <p>Not evaluated yet</p>
-    </div>
-
-</div>
-
-
-</div>
 
 <div class="content-card mt-20">
 
+    <div class="section-header">
+        <h2>Evaluation Criteria</h2>
+    </div>
 
-<div class="section-header">
-    <h2>Evaluation Criteria</h2>
+
+    <div class="table-container">
+
+        <table class="data-table">
+
+            <thead>
+
+                <tr>
+                    <th>Criteria</th>
+                    <th>Score</th>
+                    <th>Remarks</th>
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+                    <td>Technical Skills</td>
+
+                    <td>
+                        {{ evaluation.technical_score or "-" }}
+                    </td>
+
+                    <td>
+                        {{ evaluation.technical_remarks or "Pending" }}
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>Communication</td>
+
+                    <td>
+                        {{ evaluation.communication_score or "-" }}
+                    </td>
+
+                    <td>
+                        {{ evaluation.communication_remarks or "Pending" }}
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>Professionalism</td>
+
+                    <td>
+                        {{ evaluation.professionalism_score or "-" }}
+                    </td>
+
+                    <td>
+                        {{ evaluation.professionalism_remarks or "Pending" }}
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>Overall Performance</td>
+
+                    <td>
+                        {{ evaluation.overall_score or "-" }}
+                    </td>
+
+                    <td>
+                        {{ evaluation.overall_remarks or "Pending" }}
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
 </div>
 
-<div class="table-container">
 
-    <table class="data-table">
+{% else %}
 
-        <thead>
-            <tr>
-                <th>Criteria</th>
-                <th>Score</th>
-                <th>Remarks</th>
-            </tr>
-        </thead>
+<div class="content-card">
 
-        <tbody>
+    <div class="section-header">
 
-            <tr>
-                <td>Technical Skills</td>
-                <td>-</td>
-                <td>Pending</td>
-            </tr>
+        <h2>Evaluation Status</h2>
 
-            <tr>
-                <td>Communication</td>
-                <td>-</td>
-                <td>Pending</td>
-            </tr>
+        <span class="status-badge status-pending">
+            Pending
+        </span>
 
-            <tr>
-                <td>Professionalism</td>
-                <td>-</td>
-                <td>Pending</td>
-            </tr>
+    </div>
 
-            <tr>
-                <td>Overall Performance</td>
-                <td>-</td>
-                <td>Pending</td>
-            </tr>
 
-        </tbody>
+    <div class="form-row">
 
-    </table>
+        <div class="form-group">
+            <label class="form-label">Student Name</label>
+
+            <p>
+                {{ current_user.first_name }}
+                {{ current_user.last_name }}
+            </p>
+        </div>
+
+
+        <div class="form-group">
+            <label class="form-label">Company</label>
+
+            {% if internship %}
+
+                <p>
+                    {{ internship.company.name }}
+                </p>
+
+            {% else %}
+
+                <p>
+                    No internship registered
+                </p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+    <div class="form-row">
+
+        <div class="form-group">
+            <label class="form-label">Faculty Mentor</label>
+
+            {% if internship and internship.mentor %}
+
+                <p>
+                    {{ internship.mentor.first_name }}
+                    {{ internship.mentor.last_name }}
+                </p>
+
+            {% else %}
+
+                <p>
+                    Not assigned
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <div class="form-group">
+            <label class="form-label">Evaluation Date</label>
+
+            <p>
+                Not evaluated yet
+            </p>
+
+        </div>
+
+    </div>
 
 </div>
 
 
+<div class="content-card mt-20">
+
+    <div class="section-header">
+        <h2>Evaluation Criteria</h2>
+    </div>
+
+
+    <div class="table-container">
+
+        <table class="data-table">
+
+            <thead>
+
+                <tr>
+                    <th>Criteria</th>
+                    <th>Score</th>
+                    <th>Remarks</th>
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+                    <td>Technical Skills</td>
+                    <td>-</td>
+                    <td>Pending</td>
+                </tr>
+
+                <tr>
+                    <td>Communication</td>
+                    <td>-</td>
+                    <td>Pending</td>
+                </tr>
+
+                <tr>
+                    <td>Professionalism</td>
+                    <td>-</td>
+                    <td>Pending</td>
+                </tr>
+
+                <tr>
+                    <td>Overall Performance</td>
+                    <td>-</td>
+                    <td>Pending</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
 </div>
+
+{% endif %}
 
 {% endblock %}
