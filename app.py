@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import (
@@ -14,7 +15,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-app.config["SECRET_KEY"] = "iips-secret-key"
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "iips-secret-key")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///internship_system.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
@@ -1126,9 +1127,8 @@ def home():
 # CREATE DATABASE TABLES
 # =========================
 
+with app.app_context():
+    db.create_all()
+
 if __name__ == "__main__":
-
-    with app.app_context():
-        db.create_all()
-
     app.run(debug=True)
