@@ -1119,8 +1119,7 @@ def offer_management():
 
 @app.route("/")
 def home():
-
-    return "IIPS Internship Management System is running!"
+    return redirect(url_for("login"))
 
 
 # =========================
